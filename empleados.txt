@@ -1,0 +1,4 @@
+Felipe_Garcia_Lopez 30 2 Casado
+Juan_Magan_Fernandez 55 0 Soltero
+Pepe_Garcia_Soler 61 4 Soltero
+Maria_Pastor_Ferro 45 8 Casado

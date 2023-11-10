@@ -7,19 +7,21 @@ package ficherosXML.Ejercicio1;
 
 public class Alumno {
 	
+	private String id;
 	private String nombre;
 	private int nota1;
 	private int nota2;
 	private int proyecto;
 	private int practica;
 	
-	public Alumno(String nombre, int nota1, int nota2, int proyecto, int practica) {
-		super();
-		this.nombre = nombre;
-		this.nota1 = nota1;
-		this.nota2 = nota2;
-		this.proyecto = proyecto;
-		this.practica = practica;
+	public Alumno() {}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -64,8 +66,8 @@ public class Alumno {
 
 	@Override
 	public String toString() {
-		return "Alumno [nombre=" + nombre + ", nota1=" + nota1 + ", nota2=" + nota2 + ", proyecto=" + proyecto
-				+ ", practica=" + practica + "]";
+		return "Alumno [id=" + id + ", nombre=" + nombre + ", nota1=" + nota1 + ", nota2=" + nota2 + ", proyecto="
+				+ proyecto + ", practica=" + practica + "]";
 	}
 	
 }

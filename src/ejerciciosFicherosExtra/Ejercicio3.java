@@ -12,31 +12,39 @@ import java.util.Scanner;
  */
 public class Ejercicio3 {
 
+    private static int numWords;
+    private static int numChars;
+    private static int numLines = 0;
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        ArrayList<String> lineas = new ArrayList<String>();
-        int cont = 0, numMax, numMin;
+
         try {
             BufferedReader br = new BufferedReader(new FileReader("parrafo.txt"));
-            String frase = br.readLine();
-            while (frase!= null) {
-                lineas.add(frase);
-                frase = br.readLine();
-                cont++;
-            }
-            System.out.println("El texto tiene " + cont + " líneas\nDime un rango de números "
-                    + "(Menor, Mayor)y te diré el contenido de las líneas que ocupa");
-            numMin = sc.nextInt();
-            numMax = sc.nextInt();
-            br.close();
-            for (int i = numMin; i <= numMax; i++) {
-                System.out.println(lineas.get(i-1));
-            }
+            String linea;
 
+            while ((linea=br.readLine())!= null) {
+                numLines++;
+                countWords(linea);
+            }
+            System.out.println("Líneas: " + numLines + "\nPalabras: " + numWords + "\nLetras: " + numChars);
         } catch (IOException ex) {
             System.err.println("Ta mal");
         }catch (IndexOutOfBoundsException e){
             System.err.println("Ta fuera de rango");
         }
+    }
+
+    public static void countWords(String str){
+        String[] words = str.split(" ");
+        for (String s: words) {
+            countChars(s);
+            numWords++;
+        }
+    }
+
+    public static void countChars(String str){
+        char[] chars = str.toCharArray();
+        numChars+= chars.length;
     }
 }

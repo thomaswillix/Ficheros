@@ -6,11 +6,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
  *
- * @author alumno
+ * @author Thomas Freitas
  */
 public class FicherosTexto {
 
@@ -19,53 +20,27 @@ public class FicherosTexto {
         try {
             File f = new File("ficherotexto.txt");
             
-//Escribimos en el archivo con FileReader
-
-            /*FileWriter fw = new FileWriter(f);
-            char caracter;
-            System.out.println("Introducir caracter (* para finalizar)");
-            caracter = teclado.next().charAt(0);
-            while (caracter!='*') {                
-                fw.write(caracter);
-                fw.write("\n\r");
-                System.out.println("Introducir caracter (* para finalizar)");
-                caracter = teclado.next().charAt(0);
-            }
-            fw.close();
-            FileReader fr = new FileReader(f);
-            int c =fr.read();
-            while (c != -1) {
-                System.out.println(c+" " +(char)c);
-            }
-            fr.close();*/
-            
-// -------------------------------------------------------------
-//Escribimos en el archivo con BufferedReader
-            
-            FileWriter fw = new FileWriter(f);
-            BufferedWriter bw = new BufferedWriter(fw);
-            System.out.println("Introducir nombre (FIN PARA ACABAR)");
-            String cadena=teclado.nextLine();
-            while (!cadena.equalsIgnoreCase("fin")) {
+//Escrinimos en el archivo con un bufferedwriter
+            BufferedWriter  bw = new BufferedWriter(new FileWriter(f));
+            String cadena;
+            System.out.println("Introducir cadena (* para finalizar)");
+            cadena = teclado.nextLine();
+            bw.write(cadena);
+            while(!cadena.equals("*")){
+                cadena = teclado.nextLine();
                 bw.write(cadena);
-                bw.newLine();
-                System.out.println("Introducir nombre (FIN PARA ACABAR)");
-                cadena=teclado.nextLine();
+                bw.write("\n");
             }
             bw.close();
-            fw.close();
-//--------------------------------------------------------------
-            
+
 //Leemos el contenido del archivo con Buffered Reader.
-            /*FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
-            String cadena = br.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(f));
+            cadena = br.readLine();
             while (cadena !=null) {                
                 System.out.println(cadena);
                 cadena=br.readLine();
             }
             br.close();
-            fr.close();*/
         } catch (IOException e) {
             System.out.println(e);
         }

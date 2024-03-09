@@ -16,22 +16,37 @@ public class Ejercicio1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        File f = new File("parrafo.txt");
+        File input = new File("texto.txt");
+        File output = new File("invertido.txt");
         try {
-            FileWriter fw = new FileWriter(f);
-            BufferedWriter bw = new BufferedWriter(fw);
-            System.out.println("Ve introduciendo frases en el doc, (para finalizar pulsa un *)");
-            String cadena =sc.nextLine();
-            while (!(cadena.charAt(0)=='*')) {                
-                bw.write(cadena);
+            BufferedReader br = new BufferedReader(new FileReader(input));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(output));
+
+            String line;
+            while ((line = br.readLine())!= null) {
+                String invertedLine = invertLine(line);
+                bw.write(invertedLine);
                 bw.newLine();
-                System.out.println("Ve introduciendo frases en el doc, (para finalizar pulsa un *)");
-                cadena = sc.nextLine();
             }
+            br.close();
             bw.close();
-            fw.close();
+
+            br = new BufferedReader(new FileReader(output));
+            while ((line = br.readLine())!= null) {
+                System.out.println(line);
+            }
+            br.close();
         } catch (IOException e) {
             System.err.println("Ha petao");
         }
+    }
+
+    public static String invertLine(String line){
+        char[] chars = line.toCharArray();
+        String newString = "";
+        for(int i = chars.length -1; i >= 0; i--){
+            newString += chars[i];
+        }
+        return newString;
     }
 }

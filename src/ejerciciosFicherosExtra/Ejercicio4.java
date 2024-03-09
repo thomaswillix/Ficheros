@@ -1,11 +1,10 @@
 package ejerciciosFicherosExtra;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -14,35 +13,47 @@ import java.util.logging.Logger;
  * @author Thomas Freitas
  */
 public class Ejercicio4 {
+
+    private static Set<Character> vowels = new HashSet<>();
+    private static int numLines = 0;
+
     public static void main(String[] args) {
-        System.out.println("Buscando archivo...");
-        File f = new File("empleados.txt");
-        String[] spl;
-        int num;
-        ArrayList<Integer> nums = new ArrayList<>();
+        vowels.add('a'); vowels.add('e'); vowels.add('i'); vowels.add('o'); vowels.add('u');
+
+        Scanner sc = new Scanner(System.in);
+        File input = new File("texto.txt");
+        File output = new File("texto_modificado.txt");
         try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
-            String linea = br.readLine();
-            while(linea != null){
-                System.out.println(linea);
-                spl = linea.split(" ", 4);
-                num = Integer.parseInt(spl[1]);
-                nums.add(num);
-                linea = br.readLine();
+            BufferedReader br = new BufferedReader(new FileReader(input));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(output));
+            String line;
+            while((line = br.readLine())!=null){
+                String modifiedLine = insertAsterisks(line);
+                bw.write(modifiedLine);
+                bw.newLine();
             }
             br.close();
-            System.out.println("\nLa media de edad de los empleados es: " + edadMediaEmpleados(nums));
-        } catch (FileNotFoundException e) {
-            System.err.println("Archivo no encontrado mi rey");
+            bw.close();
+
+            br = new BufferedReader(new FileReader(output));
+            while((line = br.readLine())!=null){
+                System.out.println(line);
+            }
+            br.close();
         } catch (IOException ex) {
-            System.err.println("Error en la lectura y/o escritura");
+            System.err.println("Ta mal");
+        }catch (IndexOutOfBoundsException e){
+            System.err.println("Ta fuera de rango");
         }
     }
-    public static int edadMediaEmpleados(ArrayList<Integer> nums){
-        int n = 0;
-        for (Integer num : nums) {
-            n+=num;
+    public static String insertAsterisks(String line) {
+        StringBuilder modifiedLine = new StringBuilder();
+        for (char c : line.toCharArray()) {
+            if (vowels.contains(Character.toLowerCase(c))) {
+                modifiedLine.append('*');
+            }
+            modifiedLine.append(c);
         }
-        return n/nums.size();
+        return modifiedLine.toString();
     }
 }

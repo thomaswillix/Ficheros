@@ -30,15 +30,22 @@ public class Ejercicio5 {
 
     private static List<Persona> getPersonas() {
         List<Persona> personas = new ArrayList<>();
-        Persona p = new Persona("Juan", "Pérez", 23, 654534332, "juan.perez@gmail.com",
-                "Madrid","Española","Desarrollador de Software");
+        Persona p = new Persona("Juana", "De Arco", 21, 654882111, "juana.sasss@gmail.com",
+                "Burgos","Francesa","Database Administrator");
         personas.add(p);
-        p = new Persona("Felipe", "Salas", 54, 695458212, "felipe.salas@gmail.com",
-                "Alcorcón","Argentina","Software Engineer");
+        p = new Persona("Gregorio", "Gómez", 19, 658457854, "gg.dd@gmail.com",
+                "Madrid","Venezolano","Líder de proyectos");
         personas.add(p);
 
-        p = new Persona("Maria", "Marquez", 12, 654712451, "maria.marquez@gmail.com",
-                "Fuenlabrada","Italiana","Designer");
+        p = new Persona("Manuela", "López", 45, 698548521, "manu.lopez@gmail.com",
+                "Madrid","Portuguesa","Software Engineer");
+        personas.add(p);
+        p = new Persona("Juan", "José", 16, 658457854, "jj.jj@gmail.com",
+                "Madrid","Colombiano","Líder de proyectos");
+        personas.add(p);
+
+        p = new Persona("Justo", "López", 65, 698548521, "justo.lopez@gmail.com",
+                "Madrid","Alemana","Contable");
         personas.add(p);
         return personas;
     }

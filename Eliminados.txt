@@ -1,0 +1,1 @@
+Contacto{nombre='LOL', apellidos='LMAO', telefono=321, email='AS'}

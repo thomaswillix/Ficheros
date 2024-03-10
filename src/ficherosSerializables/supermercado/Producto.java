@@ -1,4 +1,4 @@
-package ficherosSerializables.ejercicio1;
+package ficherosSerializables.supermercado;
 
 import java.io.Serializable;
 import java.util.Objects;

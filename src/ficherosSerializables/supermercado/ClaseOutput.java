@@ -1,5 +1,5 @@
 
-package ficherosSerializables.ejercicio1;
+package ficherosSerializables.supermercado;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

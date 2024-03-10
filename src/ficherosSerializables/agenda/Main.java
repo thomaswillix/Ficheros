@@ -19,13 +19,14 @@ public class Main {
 
     private static void cargarContactos() {
         try {
-            ObjectOutputStream co = new ObjectOutputStream(new FileOutputStream(output));
+            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(output));
             Contacto c = new Contacto("Felipe", "Huayanai",654987254, "felipe@gmail.com");
-            co.writeObject(c);
+            oos.writeObject(c);
             c = new Contacto("Pepa", "Pera", 654878525, "apepa@ñ.com");
-            co.writeObject(c);
+            oos.writeObject(c);
             c = new Contacto("Marga", "Rina", 654758123, "margarina@butter.com");
-            co.writeObject(c);
+            oos.writeObject(c);
+            oos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -175,17 +176,21 @@ public class Main {
         return "CONTACTO NO ENCONTRADO";
     }
 
-    private static void readContacts(){
+    private static void readContacts() {
         contactos.clear();
+        ObjectInputStream ois;
         try {
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(output));
-            while (true){
-                Contacto c =  (Contacto) ois.readObject();
-                contactos.add(c);
+            ois = new ObjectInputStream(new FileInputStream(output));
+            try {
+                while (true) {
+                    Contacto c = (Contacto) ois.readObject();
+                    contactos.add(c);
+                }
+            } catch (EOFException e) {
+                System.err.println("Final de lectura.");
             }
-        } catch (EOFException e) {
-            System.err.println("Final de lectura.");
-        } catch (IOException | ClassNotFoundException e) {
+            ois.close();
+        }catch(IOException | ClassNotFoundException e){
             throw new RuntimeException(e);
         }
     }

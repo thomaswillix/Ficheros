@@ -27,6 +27,9 @@ public class Ejercicio6 {
                     oos3.writeObject(p1);
                 }
             }
+            oos.close();
+            oos2.close();
+            oos3.close();
 
             System.out.println("------------------------PRIMER OUTPUT------------------------");
             leer(output1);
@@ -43,17 +46,20 @@ public class Ejercicio6 {
     private static void leer(File input) {
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(input));
-            while (true){
-                Persona p = (Persona) ois.readObject();
-                System.out.println(p.toString());
-                personas.add(p);
-
+            try {
+                while (true) {
+                    Persona p = (Persona) ois.readObject();
+                    System.out.println(p.toString());
+                    personas.add(p);
+                }
+            } catch (EOFException e) {
+                System.err.println("Final del fichero");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
-        } catch (IOException e) {
-            System.err.println("Final del fichero");
-        } catch (ClassNotFoundException e) {
+            ois.close();
+        }catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 }

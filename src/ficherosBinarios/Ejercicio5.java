@@ -16,16 +16,18 @@ public class Ejercicio5 {
             oos.close();
 
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(output));
-            while (true) {
-                Persona p = (Persona) ois.readObject();
-                System.out.println(p.toString());
+            try {
+                while (true) {
+                    Persona p = (Persona) ois.readObject();
+                    System.out.println(p.toString());
+                }
+            } catch (EOFException e) {
+                System.err.println("Final del fichero");
             }
-        }catch (IOException e) {
-            System.err.println("Final del fichero");
-        } catch (ClassNotFoundException e) {
+            ois.close();
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private static List<Persona> getPersonas() {

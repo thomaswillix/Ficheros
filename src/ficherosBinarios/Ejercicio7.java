@@ -16,6 +16,7 @@ public class Ejercicio7 {
                separarDatos(line, dos);
             }
             br.close();
+            dos.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -28,5 +29,6 @@ public class Ejercicio7 {
         dos.writeInt(dia);
         dos.writeInt(temperatura);
         dos.writeUTF("\n");
+
     }
 }

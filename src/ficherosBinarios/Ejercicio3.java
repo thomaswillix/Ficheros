@@ -60,7 +60,7 @@ public class Ejercicio3 {
 
         File output = new File("datosbeca.bin");
         try {
-            DataOutputStream dos = new DataOutputStream(new FileOutputStream(output,true));
+            DataOutputStream dos = new DataOutputStream(new FileOutputStream(output, true));
             dos.writeUTF(nom);
             dos.writeChar(sex);
             dos.writeInt(age);
@@ -71,14 +71,17 @@ public class Ejercicio3 {
             dos.close();
             System.out.println("--------------- LECTURA DEL FICHERO BINARIO ---------------");
             DataInputStream dis = new DataInputStream(new FileInputStream(output));
-            while(true){
-                System.out.println("DATOS DE LA BECA: " + dis.readUTF() + " " + dis.readChar() + " " +
-                        dis.readInt() + " " + dis.readInt() + " " + dis.readBoolean() + " " +
-                        dis.readDouble());
+            try {
+                while (true) {
+                    System.out.println("DATOS DE LA BECA: " + dis.readUTF() + " " + dis.readChar() + " " +
+                            dis.readInt() + " " + dis.readInt() + " " + dis.readBoolean() + " " +
+                            dis.readDouble());
+                }
+            } catch (EOFException e) {
+                System.err.println("Sacabao");
             }
-        } catch (EOFException e) {
-            System.err.println("Sacabao");
-        } catch (IOException e) {
+            dis.close();
+        }catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

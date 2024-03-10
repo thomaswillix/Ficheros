@@ -23,13 +23,11 @@ public class Ejercicio1 {
         try {
             numNumeros(num);
             leerNumeros();
-        } catch (FileNotFoundException ex) {
-            System.err.println("Archivo no encontrado");
-        } catch (IOException ex) {
+        }  catch (IOException ex) {
             System.err.println("Error de Lectura/Escritura");
         }
     }
-    public static void numNumeros(int cant) throws FileNotFoundException, IOException{
+    public static void numNumeros(int cant) throws IOException{
         File f = new File("prueba.bin");
         DataOutputStream dos = new DataOutputStream(new FileOutputStream(f, true));
         for (int i = 1; i <= cant; i++) {

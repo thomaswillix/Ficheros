@@ -1,4 +1,4 @@
-package ficherosXML.Ejercicio1;
+package ficherosXML.notas;
 
 /**
 *
@@ -6,14 +6,10 @@ package ficherosXML.Ejercicio1;
 */
 
 public class Alumno {
-	
-	private String id;
-	private String nombre;
-	private int nota1;
-	private int nota2;
-	private int proyecto;
-	private int practica;
-	
+
+	private String id,nombre;
+	private int nota1,nota2,proyecto,practica;
+
 	public Alumno() {}
 	
 	public String getId() {

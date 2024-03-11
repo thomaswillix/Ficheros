@@ -1,4 +1,4 @@
-package ficherosXML;
+package ficherosXML.paises;
 
 import java.util.ArrayList;
 import org.xml.sax.Attributes;

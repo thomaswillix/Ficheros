@@ -1,4 +1,4 @@
-package ficherosXML;
+package ficherosXML.paises;
 
 import java.io.File;
 import java.io.IOException;

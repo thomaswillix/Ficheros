@@ -21,61 +21,62 @@ import org.w3c.dom.Element;
  */
 
 public class Ejercicio1 {
-    public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException {
-        File f = new File("notas.txt");
-        File f2 = new File("notas.xml");
 
-        FileReader fr = new FileReader(f);
-        BufferedReader br = new BufferedReader(fr);
-
+    public static void main(String[] args) throws ParserConfigurationException, TransformerException {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
-        Document d = db.newDocument();
-        Element raiz = d.createElement("Curso");
-        d.appendChild(raiz);
-        String cadena;
-        String[] valores;
-
-        cadena = br.readLine();
-        while (cadena != null) {
-            valores = cadena.split(" ");
-
-            Element alumno = d.createElement("alumno");
-            raiz.appendChild(alumno);
-
-            Attr id = d.createAttribute("id");
-            id.setValue(valores[0]);
-            alumno.setAttributeNode(id);
-
-            Element nombre = d.createElement("nombre");
-            nombre.appendChild(d.createTextNode(valores[1]));
-            alumno.appendChild(nombre);
-
-            Element nota1 = d.createElement("nota1");
-            nota1.appendChild(d.createTextNode(valores[2]));
-            alumno.appendChild(nota1);
-
-            Element nota2 = d.createElement("nota2");
-            nota2.appendChild(d.createTextNode(valores[3]));
-            alumno.appendChild(nota2);
-
-            Element proyecto = d.createElement("proyecto");
-            proyecto.appendChild(d.createTextNode(valores[4]));
-            alumno.appendChild(proyecto);
-
-            Element practica = d.createElement("practica");
-            practica.appendChild(d.createTextNode(valores[5]));
-            alumno.appendChild(practica);
-
-            cadena = br.readLine();
+        Document doc = db.newDocument();
+        Element root=doc.createElement("Curso");
+        doc.appendChild(root);
+        for (int i = 0; i < 3; i++) {
+            Element e = doc.createElement("alumno");
+            root.appendChild(e);
+            Attr id = doc.createAttribute("id");
+            Element nombre = doc.createElement("nombre");
+            Element nota1 = doc.createElement("nota1");
+            Element nota2 = doc.createElement("nota2");
+            Element proyecto = doc.createElement("proyecto");
+            Element practica = doc.createElement("practica");
+            switch(i){
+                case 0:
+                    id.setValue("jj");
+                    nombre.setTextContent("Juan Carlos");
+                    nota1.setTextContent("5");
+                    nota2.setTextContent("7");
+                    proyecto.setTextContent("8");
+                    practica.setTextContent("9");
+                    break;
+                case 1:
+                    id.setValue("cp");
+                    nombre.setTextContent("Christian Perez");
+                    nota1.setTextContent("7");
+                    nota2.setTextContent("8");
+                    proyecto.setTextContent("7");
+                    practica.setTextContent("4");
+                    break;
+                case 2:
+                    id.setValue("sf");
+                    nombre.setTextContent("Sonia Fernandez");
+                    nota1.setTextContent("6");
+                    nota2.setTextContent("9");
+                    proyecto.setTextContent("10");
+                    practica.setTextContent("10");
+                    break;
+            }
+            e.setAttributeNode(id);
+            e.appendChild(nombre);
+            e.appendChild(nota1);
+            e.appendChild(nota2);
+            e.appendChild(proyecto);
+            e.appendChild(practica);
         }
-
         TransformerFactory tf = TransformerFactory.newInstance();
-        Transformer t = tf.newTransformer();
-        DOMSource ds = new DOMSource(d);
-        StreamResult sr = new StreamResult(System.out);
-        t.transform(ds, sr);
-        StreamResult sr1 = new StreamResult(f2);
-        t.transform(ds, sr1);
+        Transformer transformer = tf.newTransformer();
+        DOMSource ds= new DOMSource(doc);
+        StreamResult sr= new StreamResult(new File("ejemploCreacion.xml"));
+        StreamResult sr1 = new StreamResult(System.out);
+        transformer.transform(ds, sr);
+        transformer.transform(ds, sr1);
     }
+
 }

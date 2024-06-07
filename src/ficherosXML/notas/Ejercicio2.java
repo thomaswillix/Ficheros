@@ -2,8 +2,7 @@ package ficherosXML.notas;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-
+import java.util.List;
 import javax.xml.parsers.*;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
@@ -11,7 +10,6 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -19,78 +17,52 @@ import org.xml.sax.SAXException;
 
 
 public class Ejercicio2 {
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerException {
-		File f=new File("medias.xml");
-		ArrayList<Alumno> lista=new ArrayList<Alumno>();
-		lista=LecturaFichero();
-		//  MostrarFichero(lista);
-		MostrarInformacion(lista);
-		CrearFichero(f,lista);
-
-	}
-
-	static ArrayList LecturaFichero() throws SAXException, IOException, ParserConfigurationException{
-		File f=new File("notas.xml");
-		Manejador m=new Manejador();
-		SAXParserFactory spf=SAXParserFactory.newInstance();
-		SAXParser sp=spf.newSAXParser();
-		ArrayList<Alumno> lista=new ArrayList<Alumno>();
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
+		File f = new File("ejemploCreacion.xml");
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		SAXParser sp = spf.newSAXParser();
+		Manejador m = new Manejador();
 		sp.parse(f, m);
-		lista=m.getLista();
-		return lista;
-	}
-
-	static void MostrarFichero(ArrayList<Alumno> lista){
-
-		for(int i=0;i<lista.size();i++)
-			System.out.println(lista.get(i).toString());
-
-	}
-
-	static void MostrarInformacion(ArrayList<Alumno> lista){
-		double mediaal=0,mediacur=0;
-
-		for(int i=0;i<lista.size();i++){
-			mediaal=(lista.get(i).getNota1()+lista.get(i).getNota2()+lista.get(i).getPractica()+lista.get(i).getProyecto())/4.0;
-			mediacur=mediacur+mediaal;
-			System.out.println(lista.get(i).getNombre()+" "+mediaal);
+		List<Alumno> alumnos = m.getLista();
+		System.out.println("------------ MEDIA POR ALUMNO ------------");
+		double media = 0;
+		double[] medias = new double[3];
+		for (int i = 0; i < medias.length; i++) {
+			media = (double)(alumnos.get(i).getNota1() + alumnos.get(i).getNota2() + alumnos.get(i).getPractica() + alumnos.get(i).getProyecto())/4;
+			medias[i] = media;
+			System.out.println("Media de " + alumnos.get(i).getNombre() + ":" + media);
 		}
-		System.out.println("La media del curso es "+(mediacur/lista.size()));
+		media = 0;
+		for (int i = 0; i < medias.length; i++) {
+			media += medias[i];
+		}
+		media /= medias.length;
+		System.out.println("\n\nMedia de la clase: " + media);
 
-	}
+		// CREACION DEL XML
+		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+		DocumentBuilder db = dbf.newDocumentBuilder();
+		Document doc = db.newDocument();
 
-	static void CrearFichero(File f,ArrayList<Alumno> lista) throws ParserConfigurationException, TransformerConfigurationException, TransformerException{
-		double mc=0;
-		DocumentBuilderFactory dbs=DocumentBuilderFactory.newInstance();
-		DocumentBuilder db=dbs.newDocumentBuilder();
-		Document d=db.newDocument();
-
-		Element raiz=d.createElement("Notas");
-		d.appendChild(raiz);
-
-		for(int i=0;i<lista.size();i++){
-
-			Element alumno=d.createElement("alumno");
-			raiz.appendChild(alumno);
-
-			Element nombre=d.createElement("nombre");
-			nombre.appendChild(d.createTextNode(lista.get(i).getNombre()));
+		Element root = doc.createElement("Notas");
+		root.setAttribute("MediaCurso", String.valueOf(media));
+		doc.appendChild(root);
+		for (int i = 0; i < medias.length; i++) {
+			Element alumno = doc.createElement("alumno");
+			root.appendChild(alumno);
+			Element nombre = doc.createElement("nombre");
+			nombre.setTextContent(alumnos.get(i).getNombre());
 			alumno.appendChild(nombre);
-
-			Element nota=d.createElement("nota");
-			double media=(lista.get(i).getNota1()+lista.get(i).getNota2()+lista.get(i).getPractica()+lista.get(i).getProyecto())/4.0;
-			mc=mc+media;
-			nota.appendChild(d.createTextNode(String.valueOf(media)));
+			Element nota = doc.createElement("nota");
+			nota.setTextContent(String.valueOf(medias[i]));
 			alumno.appendChild(nota);
-
 		}
-		Attr MC=d.createAttribute("MediaCurso");
-		MC.setValue(String.valueOf(mc/lista.size()));
-		raiz.setAttributeNode(MC);
-		TransformerFactory tf=TransformerFactory.newInstance();
-		Transformer t=tf.newTransformer();
-		DOMSource ds=new DOMSource(d);
-		StreamResult sr=new StreamResult(f);
-		t.transform(ds,sr);
+		TransformerFactory tf = TransformerFactory.newInstance();
+		Transformer transformer = tf.newTransformer();
+		DOMSource ds= new DOMSource(doc);
+		StreamResult sr= new StreamResult(new File("medias.xml"));
+		StreamResult sr1 = new StreamResult(System.out);
+		transformer.transform(ds, sr);
+		transformer.transform(ds, sr1);
 	}
 }

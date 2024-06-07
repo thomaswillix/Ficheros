@@ -1,6 +1,7 @@
-package ficherosXML.paises;
+package ficherosXML.localidades;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -9,37 +10,39 @@ import org.xml.sax.helpers.DefaultHandler;
  *
  * @author Thomas Freitas
  */
-public class Manejador extends DefaultHandler{
-    private ArrayList<Localidad> lista =  new ArrayList<Localidad>();
-    private Localidad l;
-    private Habitante h;
-    private StringBuilder sb = new StringBuilder();
+public class Manejador2 extends DefaultHandler{
+    List<Localidad2> lista = new ArrayList<Localidad2>();
+    StringBuilder buffer = new StringBuilder();
+    Localidad2 l;
+    Habitantes h;
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        sb.append(ch, start, length);
+        buffer.append(ch, start, length);
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
         switch(qName){
+            case "Localidad":
+                break;
             case "Continente":
-                l.setContinente(sb.toString());
+                l.setContinente(buffer.toString());
                 break;
             case "Pais":
-                l.setPais(sb.toString());
+                l.setPais(buffer.toString());
                 break;
             case "Capital":
-                l.setCapital(sb.toString());
+                l.setCapital(buffer.toString());
+                break;
+            case "Habitantes":
+                l.setH(h);
                 break;
             case "mujeres":
-                h.setMujeres(Integer.parseInt(sb.toString()));
+                h.setMujeres(Integer.parseInt(buffer.toString()));
                 break;
             case "hombres":
-                h.setHombres(Integer.parseInt(sb.toString()));
-                break;
-            case "Habitantes":    
-                l.setHabitantes(h);
+                h.setHombres(Integer.parseInt(buffer.toString()));
                 break;
         }
     }
@@ -48,23 +51,25 @@ public class Manejador extends DefaultHandler{
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         switch(qName){
             case "Localidad":
-                l =  new Localidad();
+                l = new Localidad2();
+                l.setId(Integer.parseInt(attributes.getValue("numero")));
                 lista.add(l);
-                l.setNumero(Integer.parseInt(attributes.getValue("numero")));
                 break;
-            case "Habitantes":
-                h =  new Habitante();
-            case "mujeres":
-            case "hombres":
             case "Continente":
             case "Pais":
             case "Capital":
-                sb.delete(0, sb.length());
+            case "mujeres":
+            case "hombres":
+                buffer.delete(0, buffer.length());
+                break;
+            case "Habitantes":
+                h = new Habitantes();
                 break;
         }
     }
-    
-    public ArrayList<Localidad> getLista(){
+
+    public List<Localidad2> getLista() {
         return lista;
     }
+
 }

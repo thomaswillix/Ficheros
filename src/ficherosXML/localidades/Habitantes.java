@@ -1,17 +1,16 @@
-package ficherosXML.paises;
+package ficherosXML.localidades;
 
 /**
  *
  * @author Thomas Freitas
  */
-public class Habitante {
+public class Habitantes {
     private int hombres;
     private int mujeres;
-    
-    public Habitante(){
-        
+
+    public Habitantes() {
     }
-    
+
     public int getHombres() {
         return hombres;
     }
@@ -30,7 +29,7 @@ public class Habitante {
 
     @Override
     public String toString() {
-        return "Habitante{" + "hombres=" + hombres + ", mujeres=" + mujeres + '}';
+        return "Habitantes{" + "hombres=" + hombres + ", mujeres=" + mujeres + '}';
     }
-    
+
 }

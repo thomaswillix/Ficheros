@@ -28,14 +28,14 @@ public class Ejercicio1 {
         }
     }
     public static void numNumeros(int cant) throws IOException{
-        File f = new File("prueba.bin");
+        File f = new File("files/prueba.bin");
         DataOutputStream dos = new DataOutputStream(new FileOutputStream(f, true));
         for (int i = 1; i <= cant; i++) {
             dos.writeInt((char)(Math.random()* 100));
         }
     } 
     public static void leerNumeros() throws IOException{
-        File f = new File("prueba.bin");
+        File f = new File("files/prueba.bin");
         DataInputStream dis = new DataInputStream(new FileInputStream(f));
         try {
             while (true) {

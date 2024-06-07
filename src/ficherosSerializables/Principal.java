@@ -4,7 +4,7 @@ import java.io.*;
 
 public class Principal {
     public static void main(String[] args) {
-        File f = new File("datos.obj");
+        File f = new File("files/datos.obj");
         try {
           /*FileOutputStream fos=new FileOutputStream(f);
           ObjectOutputStream oos=new ObjectOutputStream(fos);

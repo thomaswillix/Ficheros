@@ -15,7 +15,7 @@ import org.xml.sax.SAXException;
  */
 public class Main {
     public static void main(String[] args) throws SAXException, ParserConfigurationException, IOException {
-        File f = new File("empleados.xml");
+        File f = new File("files/empleados.xml");
         SAXParserFactory spf =SAXParserFactory.newInstance();
         SAXParser sp = spf.newSAXParser();
         Manejador m = new Manejador();

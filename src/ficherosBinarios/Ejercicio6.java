@@ -7,10 +7,10 @@ import java.util.List;
 public class Ejercicio6 {
     private  static List<Persona> personas = new ArrayList<>();
     public static void main(String[] args) {
-        File input = new File("personas.bin");
-        File output1 = new File("menores.bin");
-        File output2 = new File("adultos.bin");
-        File output3 = new File("mayores.bin");
+        File input = new File("files/personas.bin");
+        File output1 = new File("files/menores.bin");
+        File output2 = new File("files/adultos.bin");
+        File output3 = new File("files/mayores.bin");
         System.out.println("------------------------INPUT------------------------");
         leer(input);
         try {

@@ -8,7 +8,7 @@ public class Ejercicio4 {
     private  static List<Beca> becas = new ArrayList<>();
 
     public static void main(String[] args) {
-        File input = new File("datosbeca.bin");
+        File input = new File("files/datosbeca.bin");
         try {
             DataInputStream dis = new DataInputStream(new FileInputStream(input));
             try {

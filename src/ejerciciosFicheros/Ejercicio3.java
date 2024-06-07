@@ -9,8 +9,8 @@ import java.util.Set;
  */
 public class Ejercicio3 {
     public static void main(String[] args) {
-        File input = new File("parrafo.txt");
-        File output = new File("parrafoSinVocales.txt");
+        File input = new File("files/parrafo.txt");
+        File output = new File("files/parrafoSinVocales.txt");
 
         Set<Character> vowels = new HashSet<>();
 

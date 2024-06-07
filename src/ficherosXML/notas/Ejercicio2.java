@@ -18,7 +18,7 @@ import org.xml.sax.SAXException;
 
 public class Ejercicio2 {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
-		File f = new File("ejemploCreacion.xml");
+		File f = new File("files/ejemploCreacion.xml");
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		SAXParser sp = spf.newSAXParser();
 		Manejador m = new Manejador();
@@ -60,7 +60,7 @@ public class Ejercicio2 {
 		TransformerFactory tf = TransformerFactory.newInstance();
 		Transformer transformer = tf.newTransformer();
 		DOMSource ds= new DOMSource(doc);
-		StreamResult sr= new StreamResult(new File("medias.xml"));
+		StreamResult sr= new StreamResult(new File("files/medias.xml"));
 		StreamResult sr1 = new StreamResult(System.out);
 		transformer.transform(ds, sr);
 		transformer.transform(ds, sr1);

@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Ejercicio2 {
 
     public static void main(String[] args) {
-        File input = new File("texto.txt");
+        File input = new File("files/texto.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(input));
             String line;

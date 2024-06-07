@@ -8,8 +8,8 @@ public class Main {
     private static List<Producto> prods= new ArrayList<>();
 
     public static void main(String[] args) {
-        File input1 = new File("almacen.dat");
-        File input2 = new File("articulos.dat");
+        File input1 = new File("files/almacen.dat");
+        File input2 = new File("files/articulos.dat");
         // Paso 1: Leer el archivo almacén.dat y almacenar su contenido en un HashMap
         try {
             DataInputStream dis = new DataInputStream(new FileInputStream(input1));

@@ -16,8 +16,8 @@ public class Ejercicio1 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        File input = new File("texto.txt");
-        File output = new File("invertido.txt");
+        File input = new File("files/texto.txt");
+        File output = new File("files/invertido.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(input));
             BufferedWriter bw = new BufferedWriter(new FileWriter(output));

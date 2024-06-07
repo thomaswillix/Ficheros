@@ -20,7 +20,7 @@ public class Ejercicio3 {
         Scanner sc = new Scanner(System.in);
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("parrafo.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("files/parrafo.txt"));
             String linea;
 
             while ((linea=br.readLine())!= null) {

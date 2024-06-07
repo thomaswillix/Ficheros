@@ -18,7 +18,7 @@ public class FicherosTexto {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         try {
-            File f = new File("ficherotexto.txt");
+            File f = new File("files/ficherotexto.txt");
             
 //Escrinimos en el archivo con un bufferedwriter
             BufferedWriter  bw = new BufferedWriter(new FileWriter(f));

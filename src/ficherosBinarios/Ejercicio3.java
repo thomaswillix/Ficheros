@@ -58,7 +58,7 @@ public class Ejercicio3 {
             ing = sc.nextDouble();
         }
 
-        File output = new File("datosbeca.bin");
+        File output = new File("files/datosbeca.bin");
         try {
             DataOutputStream dos = new DataOutputStream(new FileOutputStream(output, true));
             dos.writeUTF(nom);

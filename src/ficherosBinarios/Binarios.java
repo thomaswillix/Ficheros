@@ -1,4 +1,4 @@
-package FicherosBinarios;
+package ficherosBinarios;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -11,7 +11,7 @@ import java.io.IOException;
 public class Binarios {
     public static void main(String[] args) {
         try {
-            File f = new File("prueba.bin");
+            File f = new File("files/prueba.bin");
             FileOutputStream fos = new FileOutputStream(f);
             DataOutputStream dos = new DataOutputStream(fos);
 

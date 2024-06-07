@@ -104,7 +104,7 @@ public class Main {
             Transformer t = tf.newTransformer();
             DOMSource ds = new DOMSource(d);
 
-            StreamResult sr = new StreamResult(new File("Libreria.xml"));
+            StreamResult sr = new StreamResult(new File("files/Libreria.xml"));
             StreamResult sr1 = new StreamResult(System.out);
 
             t.transform(ds, sr);

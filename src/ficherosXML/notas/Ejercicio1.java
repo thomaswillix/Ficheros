@@ -73,7 +73,7 @@ public class Ejercicio1 {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         DOMSource ds= new DOMSource(doc);
-        StreamResult sr= new StreamResult(new File("ejemploCreacion.xml"));
+        StreamResult sr= new StreamResult(new File("files/ejemploCreacion.xml"));
         StreamResult sr1 = new StreamResult(System.out);
         transformer.transform(ds, sr);
         transformer.transform(ds, sr1);

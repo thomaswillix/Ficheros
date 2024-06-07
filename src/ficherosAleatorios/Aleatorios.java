@@ -11,7 +11,7 @@ import java.io.RandomAccessFile;
 public class Aleatorios {
     public static void main(String[] args) {
         try {
-            File f = new File("prueba.bin");
+            File f = new File("files/prueba.bin");
             RandomAccessFile raf =  new RandomAccessFile(f, "rw"); //"r"
             System.out.println("Tamaño del fichero " + raf.length());
             raf.seek(raf.length());

@@ -21,8 +21,8 @@ public class Ejercicio4 {
         vowels.add('a'); vowels.add('e'); vowels.add('i'); vowels.add('o'); vowels.add('u');
 
         Scanner sc = new Scanner(System.in);
-        File input = new File("texto.txt");
-        File output = new File("texto_modificado.txt");
+        File input = new File("files/texto.txt");
+        File output = new File("files/texto_modificado.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(input));
             BufferedWriter bw = new BufferedWriter(new FileWriter(output));

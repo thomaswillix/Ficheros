@@ -14,7 +14,7 @@ import org.xml.sax.SAXException;
  */
 public class Main {
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-        File f = new File("paises.xml");
+        File f = new File("files/paises.xml");
         SAXParserFactory spf = SAXParserFactory.newInstance();
         SAXParser sp = spf.newSAXParser();
         Manejador m = new Manejador();
@@ -24,7 +24,7 @@ public class Main {
         for (Localidad localidad : lista1) {
             System.out.println(localidad.toString());
         }
-        File f2 = new File("paises1.xml");
+        File f2 = new File("files/paises1.xml");
         Manejador2 m2 = new Manejador2();
         sp.parse(f2, m2);
         System.out.println("-------------------- SEGUNDO PARSEO --------------------");

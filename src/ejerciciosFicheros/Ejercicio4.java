@@ -7,8 +7,8 @@ import java.io.*;
  */
 public class Ejercicio4 {
     public static void main(String[] args) {
-        File input = new File("empleados.txt");
-        File output = new File("pruebesitas.txt");
+        File input = new File("files/empleados.txt");
+        File output = new File("files/pruebesitas.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(input));
             FileWriter fw = new FileWriter(output);

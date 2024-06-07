@@ -62,7 +62,7 @@ public class Creacion {
 		Transformer t =  tf.newTransformer();
 		DOMSource ds = new DOMSource(d);
 		
-		StreamResult sr =  new StreamResult(new File("prueba.xml"));
+		StreamResult sr =  new StreamResult(new File("files/prueba.xml"));
 		StreamResult sr1 = new StreamResult(System.out);
 		
 		t.transform(ds, sr);

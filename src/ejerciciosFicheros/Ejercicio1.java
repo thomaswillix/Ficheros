@@ -15,8 +15,8 @@ import java.util.HashMap;
  */
 public class Ejercicio1 {
       public static void main(String[] args) {
-            File f = new File("parrafo.txt"); // Nombre del archivo de entrada corregido
-            File f1 = new File("letras.txt");
+            File f = new File("files(parrafo.txt"); // Nombre del archivo de entrada corregido
+            File f1 = new File("files/letras.txt");
 
             try {
                 HashMap<Character, Integer> letras = new HashMap<>();

@@ -6,8 +6,8 @@ import java.util.Map;
 
 public class Ejercicio7 {
     public static void main(String[] args) {
-        File input = new File("temperaturas.txt");
-        File output = new File("Septemp.dat");
+        File input = new File("files/temperaturas.txt");
+        File output = new File("files/Septemp.dat");
         try {
             BufferedReader br = new BufferedReader(new FileReader(input));
             DataOutputStream dos  = new DataOutputStream(new FileOutputStream(output));

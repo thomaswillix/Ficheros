@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class Main {
     private static List<Contacto> contactos = new ArrayList<>();
-    private static File output = new File("agenda.bin");
-    private static File deleted = new File("Eliminados.txt");
+    private static File output = new File("files/agenda.bin");
+    private static File deleted = new File("files/Eliminados.txt");
 
     public static void main(String[] args) {
         cargarContactos();
@@ -101,7 +101,7 @@ public class Main {
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(output));
             output.delete();
-            output = new File("agenda.bin");
+            output = new File("files/agenda.bin");
             for (Contacto c : contactos) {
                 oos.writeObject(c);
             }

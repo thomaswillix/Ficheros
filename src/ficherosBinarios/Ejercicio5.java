@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Ejercicio5 {
     public static void main(String[] args) {
-        File output = new File("personas.bin");
+        File output = new File("files/personas.bin");
         List<Persona> personas = getPersonas();
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(output));

@@ -57,7 +57,7 @@ public class Ejercicio2 {
         
     }
     public static void escribirCoche(String matricula, String marca, String modelo, double deposito) throws FileNotFoundException, IOException{
-        File f = new File("coche.bin");
+        File f = new File("files/coche.bin");
         DataOutputStream dos = new DataOutputStream(new FileOutputStream(f, true));
         dos.writeUTF(matricula);
         dos.writeUTF(marca);
@@ -65,7 +65,7 @@ public class Ejercicio2 {
         dos.writeDouble(deposito);
     }
     public static void leerCoche() throws IOException{
-        File f = new File("coche.bin");
+        File f = new File("files/coche.bin");
         System.out.println("----------------LISTA DE COCHES EN EL FICHERO --------------------");
         DataInputStream dis = new DataInputStream(new FileInputStream(f));
         try {

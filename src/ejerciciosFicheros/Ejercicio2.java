@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Ejercicio2 {
     public static void main(String[] args) {
-        File f = new File("parrafo.txt");
+        File f = new File("files/parrafo.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
             int cont = 0;

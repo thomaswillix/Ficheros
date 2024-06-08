@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Operaciones>
+  <operacion op="Modificacion">
+     <codigo>3</codigo>
+	 <campo>cantidad</campo>
+     <cantidad>12</cantidad>
+  </operacion> 
+  <operacion op="Baja">  
+     <codigo>4</codigo>
+  </operacion>
+  <operacion op="Modificacion">
+     <codigo>8</codigo>
+	 <campo>precio</campo>
+     <precio>10.5</precio>
+  </operacion>
+  <operacion op="Alta">
+     <cantidad>60</cantidad>
+     <precio>15.25</precio>
+  </operacion>
+  <operacion op="Baja">
+     <codigo>7</codigo>
+  </operacion>
+  <operacion op="Alta">
+     <cantidad>20</cantidad>
+     <precio>74.75</precio>
+  </operacion>
+  <operacion op="Modificacion">
+     <codigo>11</codigo>
+	 <campo>cantidad</campo>
+     <cantidad>30</cantidad>
+  </operacion>
+  <operacion op="Alta">
+     <cantidad>25</cantidad>
+     <precio>130</precio>
+  </operacion>
+  <operacion op="Baja">
+     <codigo>1</codigo>
+  </operacion>
+</Operaciones>

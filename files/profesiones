@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Profesiones>
+  <profesion id="1">
+    <nombre>Bailarina</nombre>
+    <categoria>artes</categoria>
+  </profesion>
+  <profesion id="2">
+    <nombre>Astronauta</nombre>
+    <categoria>ciencias</categoria>
+  </profesion>
+  <profesion id="3">
+    <nombre>Dependiente</nombre>
+    <categoria>comercio</categoria>
+  </profesion>
+  <profesion id="4">
+    <nombre>Odontologo</nombre>
+    <categoria>ciencias</categoria>
+  </profesion>
+  <profesion id="5">
+    <nombre>Profesor</nombre>
+    <categoria>profesional</categoria>
+  </profesion>
+  <profesion id="6">
+    <nombre>Cientifico</nombre>
+    <categoria>ciencias</categoria>
+  </profesion>
+  <profesion id="7">
+    <nombre>Policia</nombre>
+    <categoria>profesional</categoria>
+  </profesion>
+  <profesion id="8">
+    <nombre>Cajero</nombre>
+    <categoria>comercio</categoria>
+  </profesion>
+  <profesion id="9">
+    <nombre>Bombero</nombre>
+    <categoria>profesional</categoria>
+  </profesion>
+ </Profesiones>
+ 	

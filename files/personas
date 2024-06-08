@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Personas>
+  <persona id="1">
+    <nombre>Ana Llanos</nombre>
+    <fecha_nac>1988-03-08</fecha_nac>
+    <profesion>1</profesion>
+  </persona>
+  <persona id="2">
+    <nombre>Carlos Entes</nombre>
+    <fecha_nac>1996-03-26</fecha_nac>
+    <profesion>5</profesion>
+  </persona>
+  <persona id="3">
+    <nombre>Zoila Diaz</nombre>
+    <fecha_nac>1987-03-28</fecha_nac>
+    <profesion>2</profesion>
+  </persona>
+  <persona id="4">
+    <nombre>Noelia Guzman</nombre>
+    <fecha_nac>1988-03-08</fecha_nac>
+    <profesion>12</profesion>
+  </persona>
+  <persona id="5">
+    <nombre>Pedro Duque</nombre>
+    <fecha_nac>1990-03-26</fecha_nac>
+    <profesion>2</profesion>
+  </persona>
+  <persona id="6">
+    <nombre>Jaime Vazquez</nombre>
+    <fecha_nac>1987-03-28</fecha_nac>
+    <profesion>4</profesion>
+  </persona>
+  <persona id="7">
+    <nombre>Rosa Flores</nombre>
+    <fecha_nac>1985-03-08</fecha_nac>
+    <profesion>11</profesion>
+  </persona>
+  <persona id="8">
+    <nombre>Juan Valle</nombre>
+    <fecha_nac>1990-03-26</fecha_nac>
+    <profesion>4</profesion>
+  </persona>
+  <persona id="9">
+    <nombre>Francisco Lopez</nombre>
+    <fecha_nac>1979-03-28</fecha_nac>
+    <profesion>2</profesion>
+  </persona>
+  <persona id="10">
+    <nombre>Irene Alvarez</nombre>
+    <fecha_nac>1988-03-08</fecha_nac>
+    <profesion>1</profesion>
+  </persona>
+  <persona id="11">
+    <nombre>Daniel Vilar</nombre>
+    <fecha_nac>1990-03-26</fecha_nac>
+    <profesion>2</profesion>
+  </persona>
+  <persona id="12">
+    <nombre>Jose Blas</nombre>
+    <fecha_nac>1993-03-28</fecha_nac>
+    <profesion>10</profesion>
+  </persona>
+</Personas>

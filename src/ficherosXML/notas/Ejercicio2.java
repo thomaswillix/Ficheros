@@ -15,7 +15,9 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-
+/**
+ * @author Thomas Freitas
+ */
 public class Ejercicio2 {
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerConfigurationException, TransformerException {
 		File f = new File("files/ejemploCreacion.xml");

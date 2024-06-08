@@ -34,7 +34,7 @@ public class Main {
         System.out.println(b.toString());
 
         ManejadorOperaciones m2 = new ManejadorOperaciones();
-        File f2 = new File("files/datos.xml");
+        File f2 = new File("files/datosBolsa.xml");
         sp.parse(f2, m2);
         ArrayList<Operacion> operaciones = m2.getLista();
         ArrayList<Empresa> empresas = b.getEmpresas();

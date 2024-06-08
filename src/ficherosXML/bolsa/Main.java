@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  */
 public class Main {
     public static void main(String[] args) throws SAXException, ParserConfigurationException, IOException, TransformerConfigurationException, TransformerException {
-        File f = new File("Bolsa.xml");
+        File f = new File("files/Bolsa.xml");
         SAXParserFactory spf=SAXParserFactory.newInstance();
         SAXParser sp=spf.newSAXParser();
         ManejadorEmpresas m = new ManejadorEmpresas();
@@ -34,7 +34,7 @@ public class Main {
         System.out.println(b.toString());
 
         ManejadorOperaciones m2 = new ManejadorOperaciones();
-        File f2 = new File("datos.xml");
+        File f2 = new File("files/datos.xml");
         sp.parse(f2, m2);
         ArrayList<Operacion> operaciones = m2.getLista();
         ArrayList<Empresa> empresas = b.getEmpresas();
@@ -97,7 +97,7 @@ public class Main {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         DOMSource ds= new DOMSource(doc);
-        StreamResult sr= new StreamResult(new File("bolsaactualizada.xml"));
+        StreamResult sr= new StreamResult(new File("files/bolsaactualizada.xml"));
         StreamResult sr1 = new StreamResult(System.out);
         transformer.transform(ds,sr);
         transformer.transform(ds,sr1);

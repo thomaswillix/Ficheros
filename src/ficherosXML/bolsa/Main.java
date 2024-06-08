@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
  */
 public class Main {
     public static void main(String[] args) throws SAXException, ParserConfigurationException, IOException, TransformerConfigurationException, TransformerException {
-        File f = new File("files/Bolsa.xml");
+        File f = new File("Bolsa.xml");
         SAXParserFactory spf=SAXParserFactory.newInstance();
         SAXParser sp=spf.newSAXParser();
         ManejadorEmpresas m = new ManejadorEmpresas();
@@ -33,14 +33,15 @@ public class Main {
         System.out.println("------------------- CONTENIDO DEL ARCHIVO Bolsa.xml -------------------");
         System.out.println(b.toString());
 
-        System.out.println("------------------- CONTENIDO DEL ARCHIVO datos.xml -------------------");
         ManejadorOperaciones m2 = new ManejadorOperaciones();
-        File f2 = new File("files/datos.xml");
+        File f2 = new File("datos.xml");
         sp.parse(f2, m2);
         ArrayList<Operacion> operaciones = m2.getLista();
         ArrayList<Empresa> empresas = b.getEmpresas();
         Empresa e;
+        System.out.println("------------------- CONTENIDO DEL ARCHIVO datos.xml -------------------");
         for (Operacion operacion : operaciones) {
+            System.out.println(operacion.toString());
             int id = existeEmpresa(empresas, operacion);
             switch(operacion.getId()){
                 case 'A':
@@ -67,6 +68,7 @@ public class Main {
                     else empresas.remove(empresas.get(id));
             }
         }
+        System.out.println("------------------- CREACIÓN DEL ARCHIVO bolsaactualizada.xml -------------------");
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder db = dbf.newDocumentBuilder();
         Document doc = db.newDocument();
@@ -95,7 +97,7 @@ public class Main {
         TransformerFactory tf = TransformerFactory.newInstance();
         Transformer transformer = tf.newTransformer();
         DOMSource ds= new DOMSource(doc);
-        StreamResult sr= new StreamResult(new File("files/bolsaactualizada.xml"));
+        StreamResult sr= new StreamResult(new File("bolsaactualizada.xml"));
         StreamResult sr1 = new StreamResult(System.out);
         transformer.transform(ds,sr);
         transformer.transform(ds,sr1);

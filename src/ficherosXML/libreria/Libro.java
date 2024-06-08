@@ -1,11 +1,17 @@
 package ficherosXML.libreria;
 
+/**
+ *
+ * @author Thomas Freitas
+ */
 public class Libro {
     private int id;
-    private String tematica, editorial, anioPublicacion, idioma, titulo, autor;
-
-    public Libro() {
-    }
+    private String idioma;
+    private String titulo;
+    private String autor;
+    private String tematica;
+    private String editorial;
+    private int fPublicacion;
 
     public int getId() {
         return id;
@@ -13,30 +19,6 @@ public class Libro {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getTematica() {
-        return tematica;
-    }
-
-    public void setTematica(String tematica) {
-        this.tematica = tematica;
-    }
-
-    public String getEditorial() {
-        return editorial;
-    }
-
-    public void setEditorial(String editorial) {
-        this.editorial = editorial;
-    }
-
-    public String getAnioPublicacion() {
-        return anioPublicacion;
-    }
-
-    public void setAnioPublicacion(String anioPublicacion) {
-        this.anioPublicacion = anioPublicacion;
     }
 
     public String getIdioma() {
@@ -63,16 +45,33 @@ public class Libro {
         this.autor = autor;
     }
 
+    public String getTematica() {
+        return tematica;
+    }
+
+    public void setTematica(String tematica) {
+        this.tematica = tematica;
+    }
+
+    public String getEditorial() {
+        return editorial;
+    }
+
+    public void setEditorial(String editorial) {
+        this.editorial = editorial;
+    }
+
+    public int getfPublicacion() {
+        return fPublicacion;
+    }
+
+    public void setfPublicacion(int fPublicacion) {
+        this.fPublicacion = fPublicacion;
+    }
+
     @Override
     public String toString() {
-        return "Libro{" +
-                "id=" + id +
-                ", tematica='" + tematica + '\'' +
-                ", editorial='" + editorial + '\'' +
-                ", anioPublicacion=" + anioPublicacion +
-                ", idioma='" + idioma + '\'' +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                '}';
+        return "Libro{" + "id=" + id + ", idioma=" + idioma + ", titulo=" + titulo + ", autor=" + autor + ", tematica=" + tematica + ", editorial=" + editorial + ", fPublicacion=" + fPublicacion + '}';
     }
+
 }

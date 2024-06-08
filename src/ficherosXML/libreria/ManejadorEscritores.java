@@ -1,47 +1,55 @@
 package ficherosXML.libreria;
 
+import java.util.ArrayList;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import java.util.ArrayList;
-
+/**
+ *
+ * @author Thomas Freitas
+ */
 public class ManejadorEscritores extends DefaultHandler{
-
-    ArrayList<Libro> libros = new ArrayList<>();
-    Libro l;
-    StringBuilder sb = new StringBuilder();
+    private Libro l;
+    private ArrayList<Libro> lista = new ArrayList<>();
+    private StringBuilder buffer = new StringBuilder();
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        super.characters(ch, start, length);
+        buffer.append(ch, start, length);
     }
 
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        switch (qName){
-            case "Titulo":
-                l.setTitulo(sb.toString());
-                break;
-            case "Autor":
-                l.setAutor(sb.toString());
-                break;
-        }
-    }
-    @Override
-    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
-        switch (qName){
+        switch(qName){
             case "Libro":
-                l = new Libro();
-                libros.add(l);
-                l.setId(Integer.parseInt(attributes.getValue("id")));
                 break;
             case "Titulo":
+                l.setTitulo(buffer.toString());
+                break;
             case "Autor":
-                sb.delete(0, sb.length());
+                l.setAutor(buffer.toString());
                 break;
         }
     }
 
-    public ArrayList<Libro> getLibros() {return libros;}
+    @Override
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+        switch(qName){
+            case "Libro":
+                l = new Libro();
+                l.setId(Integer.parseInt(attributes.getValue("id")));
+                lista.add(l);
+                break;
+            case "Titulo":
+            case "Autor":
+                buffer.delete(0, buffer.length());
+                break;
+        }
+    }
+
+    public ArrayList<Libro> getLista() {
+        return lista;
+    }
+
 }

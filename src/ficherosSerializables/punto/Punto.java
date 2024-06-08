@@ -31,38 +31,31 @@ public class Punto implements Serializable{
     public Punto() {
     }
 
-    public static void almacenarPuntosEnArchivo(File f1, File f2) throws IOException{
+    public static void almacenarPuntosEnArchivo(File f1, File f2){
         Punto p;
-        ArrayList<Punto> lista = new ArrayList<>();
         try {
+            if(!f2.exists()){
+                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f2));
+                oos.close();
+            }
             DataInputStream dis = new DataInputStream(new FileInputStream(f1));
+            MiClaseOutput co = new MiClaseOutput(new FileOutputStream(f2, true));
             try {
                 while (true) {
                     p = new Punto(dis.readInt(), dis.readInt());
-                    lista.add(p);
+                    co.writeObject(p);
                 }
             } catch (EOFException e) {
                 dis.close();
+                co.close();
                 System.err.println("End of file");
             }
         } catch (FileNotFoundException ex) {
             System.err.println("File not found");
+        } catch (IOException ex) {
+            Logger.getLogger(Punto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (f2.exists()) {
-            MiClaseOutput co = new MiClaseOutput(new FileOutputStream(f2, true));
-            for (Punto punto : lista) {
-                co.writeObject(punto);
-            }
-            co.close();
-        }else{
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(f2));
 
-            for (Punto punto : lista) {
-                oos.writeObject(punto);
-            }
-            oos.close();
-
-        }
     }
 
     public static ArrayList<Punto> obtenerArrayListDeArchivo(File f){
@@ -70,8 +63,10 @@ public class Punto implements Serializable{
         try {
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
             try {
-                Punto p = (Punto) ois.readObject();
-                lista.add(p);
+                while (true) {
+                    Punto p = (Punto) ois.readObject();
+                    lista.add(p);
+                }
             } catch (EOFException e) {
                 ois.close();
                 System.err.println("End of file");
